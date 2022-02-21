@@ -54,6 +54,7 @@ db.connect((err) => {
   console.log("connected as id " + db.threadId);
 });
 
+global.query = db.query;
 const MySQLStore = require('express-mysql-session')(session);
 const sessionStore = new MySQLStore(options);
 
@@ -126,3 +127,6 @@ app.use('*', function (req, res) {
 app.listen(port, () => {
   console.log("le serveur tourne sur le prt: " + port);
 });
+
+
+module.exports = { app, db, query }
