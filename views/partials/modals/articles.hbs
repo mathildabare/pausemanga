@@ -1,0 +1,163 @@
+{{!-- Modal :
+Articles --}}
+
+
+
+
+{{!-- Article Creation --}}
+
+<div class="modal fade" id="create-article-modal" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Add an article</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+
+                  <form action="/admin/articles" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+                                    <div class="mb-3 element-form">
+                                          <label for="input-title" class="form-label"></label>
+                                          <input name="title" type="text" class="form-control" id="input-title"
+                                                placeholder="Title">
+                                    </div>
+
+                                    <div class="mb-3">
+                                          <label for="formFileSm" class="form-label"></label>
+                                          <input class="form-control form-control-sm" name="img" type="file">
+                                    </div>
+                                    <label class="form-label">Genre 1</label>
+                                    <select name='genre_1' class="form-select">
+                                          <option value="" disabled selected> . . . . .</option>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>                                          
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
+                                    </select>
+                                    <label class="form-label">Genre 2</label>
+                                    <select name='genre_2' class="form-select">
+                                          <option value="" disabled selected> . . . . .</option>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>                                          
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
+                                    </select>
+                                    <div class="mb-3 element-form">
+                                          <label for="input-email" class="form-label"></label>
+                                          <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="30"
+                                                rows="10" placeholder=" Write an article . . ."></textarea>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+
+
+            </div>
+      </div>
+</div>
+
+
+{{!-- Article Edition --}}
+
+<div class="modal fade" id="edit-article-modal-{{ id }}" tabindex="-1" aria-labelledby="edituserlabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Edit</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <!-- Form -->
+                  <form action="/admin/articles/{{ id }}?_method=PUT" method="post" enctype="multipart/form-data">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+                                    <div class="mb-3 element-form">
+                                          <label for="input-title" class="form-label"></label>
+                                          <input name="title" type="text" class="form-control" id="input-title"
+                                                placeholder="Title" value=" {{ title }}">
+                                    </div>
+
+                                    <div class="mb-3">
+                                          <label for="formFileSm" class="form-label"></label>
+                                          <input class="form-control form-control-sm" name="img" id="articleImg"                                         type="file" value="{{ img }}">
+                                    </div>
+
+                                    <label class="form-label">Genre 1</label>
+                                    <select name='genre_1' class="form-select">
+                                          <option value="" disabled selected> {{ genre_1 }}</option>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>                                          
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
+                                    </select>
+                                    <label class="form-label">Genre 2</label>
+                                    <select name='genre_2' class="form-select">
+                                          <option=value="" disabled selected> {{ genre_2 }}</option=value=>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>                                          
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
+                                    </select>
+                                    <div class="mb-3 element-form">
+                                          <label for="input-email" class="form-label"></label>
+                                          <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="30"
+                                                rows="10" value=" {{ synopsis }}"></textarea>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="cancel" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>
+
+{{!-- Article Delete --}}
+
+<div class="modal fade" id="delete-content-modal-{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+
+                  <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        Delete this item ?
+                  </div>
+                  <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                        <form action="/admin/articles/{{ id }}?_method=DELETE" method="post">
+                              <button type="submit" class="btn btn-primary">Confirm</button>
+                        </form>
+                  </div>
+            </div>
+      </div>
+</div>

@@ -1,0 +1,62 @@
+{{!-- Modal :
+Users --}}
+
+
+
+{{!-- User Ban --}}
+
+<div class="modal fade" id="ban-user-modal-{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <form action="admin/ban/users/{{ id }}?_method=PUT" method="post">
+                        <div class="modal-body">
+                              Are you sure you want ban this user ?
+                        </div>
+                        <div class="modal-footer">
+
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-primary">Confirm</button>
+
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>
+
+{{!--User Edition --}}
+
+<div class="modal fade" id="edit-user-modal-{{ id }}" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Edit</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="/admin/users/{{ id }}?_method=PUT" method="post">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+                                    <div class="mb-3 element-form">
+                                          <label for="input-username" class="form-label">Username</label>
+                                          <input name="username" type="text" class="form-control" value='{{ username }}'
+                                                id="input-username-{{ id }}">
+                                    </div>
+                                    <div class="mb-3 element-form">
+                                          <label for="input-email" class="form-label">Mail address</label>
+                                          <input name="mail" type="email" class="form-control" value='{{ mail }}'
+                                                id="input-email-{{ id }}">
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>

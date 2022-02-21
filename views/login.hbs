@@ -1,0 +1,36 @@
+{{!-- 
+    Page: Login
+ --}}
+
+    <link rel="stylesheet" href="/assets/css/connexion.css">
+</head>
+
+<body>
+
+    {{> main/header }}
+
+    {{> login/log }}
+
+<script>
+
+    console.log('mon js')
+
+    const logUsername = document.getElementById('logUsername')
+    console.log(logUsername)
+
+
+    const logPassword = document.getElementById('logPassword')
+    console.log(logPassword)
+
+    const submitBtn = document.getElementById('submitBtn')
+
+    submitBtn.addEventListener('click', function (e) {
+        if (logUsername.value !== 'math' && logPassword.value !== 'math') {
+            e.preventDefault()
+        }
+    })
+
+    console.log(submitBtn)
+
+
+</script>

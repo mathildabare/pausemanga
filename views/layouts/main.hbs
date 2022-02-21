@@ -1,0 +1,39 @@
+{{!--
+Layout: Main
+--}}
+
+
+{{> main/headDefault }}
+
+{{{ body }}}
+
+{{> main/navbar }}
+
+{{> main/footer }}
+
+{{> modals/login }}
+
+{{> modals/logout }}
+
+{{> main/endDefault }}
+
+
+
+{{#if modalLoginOpen}}
+
+<script>
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalLogin')).show();
+    modal.show();
+</script>
+
+{{/if }}
+
+
+{{#if modalLoginBan}}
+
+<script>
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalLogin')).show();
+    modal.show();
+</script>
+
+{{/if }}

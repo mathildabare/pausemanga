@@ -1,0 +1,32 @@
+{{!--
+Partial : Messages
+--}}
+
+<section class="form-comment">
+    <div class="container">
+        <hr>
+        <div class="row">
+
+{{!-- CREATE COMMENT -- METHOD POST --}}
+
+            <form action="/article/{{ article.id }}" method="post">
+                
+                <div class="contact-form">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea
+                    name="content"
+                    id="textarea-message"
+                    rows="4"
+                    class="contact-message form-control"></textarea>
+                </div>
+                <div class="row">
+                    <div class="contact-form">
+                        <button type="submit" class="btn-contact">Send</button>
+                    </div>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+</section>

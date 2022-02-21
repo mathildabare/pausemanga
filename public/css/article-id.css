@@ -1,0 +1,317 @@
+/* 
+ * GENERAL
+ * ******************* */
+
+ html {
+    background-color: white;
+}
+
+/** typos **/
+
+h1,
+h2,
+h3,
+h4,
+.navbar {
+
+    font-family: 'Lato', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: -1px;
+    word-spacing: 8px;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: black;
+    font-size: 165%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    display: block;
+    height: 2px;
+    background-color: rgb(162, 29, 29);
+    width: 100px;
+    content: "  ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+h4 {
+font-size: 100%;    
+}
+
+p,
+label {
+    font-size: 7.5pt;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+small {
+    font-size: 7pt;
+}
+
+
+.fw-400 {
+    font-weight: 400;
+}
+
+/** Buttons **/
+
+.btn-submit {
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+}
+
+
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
+}
+
+
+/** Padding & Margin **/
+
+section {
+    padding: 30px 0 60px 0;
+}
+
+/* 
+    * NAVBAR
+    * ******************* */
+
+.nav-item {
+    font-size: 8pt;
+}
+
+nav btn {
+    font-size: 8pt;
+}
+
+.navbar-nav {
+    font-family: 'Spartan', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.selectpicker {
+    border: none;
+    border-radius: 5px;
+}
+
+   /* 
+  * EVENT
+  * ******************* */
+
+.blog-id {
+    background-color: rgb(238, 238, 238);
+    ;
+}
+.article-container{
+text-align: center;
+
+}
+
+.event-details p {
+    text-align: center;
+}
+
+.article-container img {
+    height: auto;
+    width: 50%;
+    
+}
+
+cite {
+    font-size: 8pt;
+}
+
+
+/* 
+  * COMMENTAIRES
+  * ******************* */
+
+.comments {
+    background-color:lightgrey;
+}
+
+.all-comments {
+    background-color: rgb(243, 243, 243);
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 5px;
+}
+
+
+.btn-contact {
+    background: lightgrey;
+    border: 1px solid black;
+    height: 20px;
+    width: 60px;
+    border-radius: 0;
+    text-align: center;
+    font-size: 9pt;
+}
+
+.form-comment{
+    background-color: lightgrey;
+}
+
+
+.users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.users img {
+
+    border-radius: 50%;
+    margin-top: 5px;
+    width: 25%;
+    height: auto;
+}
+
+p {
+    margin: 0;
+}
+
+
+.user-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-break: anywhere;
+    font-weight: 300;
+}
+
+
+
+/* 
+ * FOOTER
+ * ******************* */
+
+
+ footer {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    height: auto;
+    font-size: 10pt;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+footer p {
+    font-size: 9pt;
+}
+
+
+footer input {
+    height: 25px;
+}
+
+
+.footer-us ul li {
+    list-style: none;
+}
+
+.footer-us ul li a {
+    margin-right: 30px;
+}
+
+
+
+.newsletter,
+.footer-icons {
+    margin-top: 10px;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 10px;
+}
+
+/** Icons **/
+
+.footer-icons a {
+    font-size: 18px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer-icons a:hover {
+    color: lightgray;
+}
+
+.copyright {
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding : 1px;
+    text-align: center;
+}
+
+.copyright a {
+    color: white;
+}
+
+
+@media screen and (max-width: 640px) {
+
+    .footer-us,
+    .footer-icons,
+    .newsletter {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .client-profil:hover {
+
+        transform: translateY(10px);
+        background-color: rgb(240, 239, 239);
+        transition: all 0.5s;
+    }
+
+    .article-container img {
+        height: 400px;
+        width: auto;
+        
+    }
+
+    .login {
+        margin-left: 0;
+    }
+
+.users img {
+    width: 15%;
+}
+
+
+}

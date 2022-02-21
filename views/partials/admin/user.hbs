@@ -1,0 +1,40 @@
+{{!--
+Partial: Users
+--}}
+
+
+<section class="admin-user" id="user">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-user"></i> users</h3>
+
+            {{#each users }}
+            
+            <div class="col-md-3 mb-3">
+                <div class="user-details">
+                    <img src="assets/images/Users/{{ avatar }}" alt="">
+                    <h4> {{ username }} </h4>
+                    <p> {{ mail }} </p>
+                    <div class="gst-icons">
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#ban-user-modal-{{ id }}">
+                            <i class="fas fa-ban"></i>
+                        </button>
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#edit-user-modal-{{ id }}">
+                            <i class="fas fa-pencil-alt"></i>
+                        
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+
+            {{> modals/users }}
+
+            {{/each }}
+
+        </div>
+    </div>
+</section>

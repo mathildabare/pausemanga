@@ -1,0 +1,54 @@
+{{!--
+Partial: Articles
+--}}
+
+<section class="admin-blog" id="blog">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-book"></i> Library</h3>
+
+
+            {{#each articles}}
+
+            {{!-- Articles --}}
+
+            <div class="col-md-3 mb-3"   id="{{ id }}">
+                <div class="card-details">
+                    <img src="/assets/images/Articles/{{ img }}">
+                    <h4> {{ title }} </h4>
+                    <p>{{genre_1}}, {{genre_2}}</p>
+                    <div class="gst-icons">
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#edit-article-modal-{{ id }}">
+                            <i class="fas fa-pencil-alt"></i></button>
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-content-modal-{{ id }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+
+                {{> modals/articles }}
+
+                    </div>
+                </div>
+            </div>
+                 {{/each}}
+
+            {{!-- Article Creation --}}
+
+
+            <div class="col-md-3 mb-3">
+                <div class="card-details">
+                    <button type="button" class="btn btn-add" data-bs-toggle="modal"
+                        data-bs-target="#create-article-modal"><i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+                {{> modals/articles }}
+
+  
+        </div>
+    </div>
+</section>

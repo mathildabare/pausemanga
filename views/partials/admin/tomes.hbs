@@ -1,0 +1,57 @@
+{{!--
+Partial: Tomes (Admin)
+--}}
+
+
+<section class="admin-messages" id="tomes">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-book"></i> Tomes</h3>
+
+
+
+            {{#each tomes}}
+
+            {{!-- Articles --}}
+
+            <div class="col-md-3 mb-3" id="{{ id }}">
+                <div class="card-details">
+                    <img src="/assets/images/Tomes/{{ img }}">
+                    <h4> {{ name }} </h4>
+                    <p>Tome n° {{ number }}</p>
+                    <div class="gst-icons">
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#edit-tome-modal-{{ id }}">
+                            <i class="fas fa-pencil-alt"></i></button>
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-tome-modal-{{ id }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+
+                        {{> modals/tomes }}
+
+                    </div>
+                </div>
+            </div>
+
+            
+
+            {{/each}}
+
+
+            <div class="col-md-3 mb-3">
+                <div class="card-details" style="background-color: rgb(221, 221, 221);">
+                    <button type="button" style="background-color: rgb(221, 221, 221)" ; class="btn btn-add"
+                        data-bs-toggle="modal" data-bs-target="#create-tome-modal"><i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>

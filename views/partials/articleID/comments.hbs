@@ -1,0 +1,35 @@
+{{!-- Partial: Comments
+--}}
+
+<section class="comments" id="comments">
+    <div class="container">
+        <div class="row">
+            <h2>Comments</h2>
+
+            <!---Commentaires-->
+
+            {{#each comments}}
+
+
+            <div class="all-comments">
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="users col-md-4">
+                            <img src="/assets/images/Users/{{ avatar }}" alt="">
+                            <p>{{ username }}</p>
+                        </div>
+
+
+                        <div class="user-comment col-md-8">
+                            <cite> " {{ content }} "</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+
+        </div>
+    </div>
+</section>

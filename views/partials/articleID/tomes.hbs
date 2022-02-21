@@ -1,0 +1,28 @@
+
+{{!--
+Partial : TOMES ID
+--}}
+
+
+<section class="tomes">
+    <div class="container">
+        <div class="row">
+
+            {{#each tomes}}
+
+            <div class="col-md-2">
+                <div class="card-details" style="text-align: center;">
+                    <img class="card-img-top" style="width : 80%; height : auto;"
+                        src="/assets/images/Tomes/{{ img }}">
+                    <div class="card-body">
+                        <p>Tome n° {{ number }} </p>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+
+        </div>
+
+    </div>
+</section>

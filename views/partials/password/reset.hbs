@@ -1,0 +1,72 @@
+{{!--
+Partial: Reset Password
+--}}
+
+<section class="login">
+    <div class="container">
+        <div class="mt-5 mb-5">
+            <h2>Reset Password</h2>
+        </div>
+        <form action="/resetpassword/{{rand}}" method="post">
+            <div class="col-md-12">
+                
+                <div class="contact-form mb-3">
+                    <input
+                    name="password"
+                    class="form-control"
+                    type="password"
+                    id="pw"
+                    placeholder="New Password">
+                </div>
+                <div class="contact-form mb-3">
+                    <input
+                    name="confirmPassword"
+                    class="form-control"
+                    type="password"
+                    id="pwConfirm"
+                    placeholder="Confirm Password">
+                </div>
+                <div class="col-md-12">
+                    <p id="prevent"> </p>
+                </div>
+                <div class="col-md-2">
+                    <a id="submit-btn" href="/"><button class="btn-log">Submit</button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+
+    // Mot de Passe
+    const pw = document.getElementById('pw')
+    console.log(pw)
+
+    // Confirmation du Mot de Passe
+    const pwConfirm = document.getElementById('pwConfirm')
+    console.log(pwConfirm)
+
+    // Affichage du message d'erreur
+    const warnMessage = document.getElementById('prevent')
+    warnMessage.style.color = 'red'
+    warnMessage.style.fontSize = '8pt'
+    console.log(warnMessage)
+
+
+    // Button
+    const submitBtn = document.getElementById('submit-btn')
+    console.log(submitBtn)
+
+
+
+    submitBtn.addEventListener('click', function (e) {
+        if (pw.value !== pwConfirm.value) {
+            e.preventDefault(), warnMessage.innerText = 'Passwords are different', console.log('different password'), pw.style.border = "1px solid red"
+            pwConfirm.style.border = "1px solid red";
+        } else if (pw.value === "") {
+            e.preventDefault(), warnMessage.innerText = 'Password is empty', console.log('empty password'), pw.style.border = "1px solid red", pwConfirm.style.border = "";
+        }
+    })
+
+</script>

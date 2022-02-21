@@ -1,0 +1,35 @@
+{{!--
+Partial: Navbar (Admin)
+--}}
+
+
+
+<nav class="navbar navbar-light navbar-expand-md fixed-top bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/"><img src="/assets/images/All/logo.png" style="max-width: 40px;"> Pause Manga</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#monMenu"
+            aria-controls="monMenu" aria-label="MobileMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="monMenu">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-item nav-link" href="/article">Library</a>
+                <a class="nav-item nav-link" href="/contact">Contact</a>
+
+                {{!-- Admin --}}
+                {{#if user.isAdmin }}
+                <a class="nav-item nav-link" href="/admin">Admin</a>
+                {{/if }}
+
+                {{!-- Login --}}
+                {{#if user }}
+                <a class="nav-item nav-link" href="/user">Profile</a>
+                <a class="nav-item btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#deconnexion-modal">
+                    Logout
+                </a>
+                {{/if }}
+
+            </div>
+        </div>
+    </div>
+</nav>

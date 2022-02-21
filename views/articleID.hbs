@@ -1,0 +1,24 @@
+{{!--
+Page: Blog-ID
+--}}
+
+
+<link rel="stylesheet" href="/assets/css/article-id.css">
+</head>
+
+<body>
+
+
+    {{> main/header }}
+
+    {{> articleID/event }}
+
+    {{> articleID/tomes }}
+
+    {{> articleID/comments }}
+
+{{#if user}}
+
+    {{> articleID/addComment }}
+
+{{/if}}

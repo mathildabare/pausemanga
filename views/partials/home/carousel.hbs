@@ -1,0 +1,107 @@
+{{!-- 
+    Partial: Bannière
+ --}}
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+
+    {{!-- Contenu Bannière 1 --}}
+
+    <div class="carousel-inner">
+        <div class="carousel-item active"
+            style="background-image: linear-gradient(to right, rgba(252, 252, 252, 0.7), rgba(170, 170, 170, 0.4)), url(/assets/images/All/ban1.png) ">
+            <div class="container mt-3 mb-5">
+                <div class="row">
+
+                    <h2>guided tour on hogsmeade</h2>
+
+                    {{!-- Pack 1 --}}
+
+                    <div class="col-md-6">
+                        <div class="pack">
+                            <div class="pack-title">
+                                <h3>Wizards</h3>
+                                <h4>15 £<span>/person</span></h4>
+                            </div>
+                            <div class="txt-center">
+                                <a href="/" class="btn btn-red">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{!-- Pack 2 --}}
+
+                    <div class="col-md-6">
+                        <div class="pack">
+                            <div class="pack-title">
+                                <h3>Muggles</h3>
+                                <h4>25 £<span>/person</span></h4>
+                            </div>
+                            <div class="txt-center">
+                                <a href="/" class="btn btn-red">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="txt-center">
+                        <p class="fw-400">
+                            <small>*Shrieking Shack not-included. Muggles younger than 17 years old required
+                                responsible adults presence on pain of sanctions by Ministry of Magic .
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Contenu Bannière 2 --}}
+
+        <div class="carousel-item"
+            style="background-image:linear-gradient(to left, rgba(252, 252, 252, 0.8), rgba(170, 170, 170, 0.4)), url(assets/images/All/ban2.jpg); background-size: cover;">
+            <div class="container mt-3 mb-5">
+                <div class="row">
+                    <h2>honeydukes</h2>
+                    <div class="col-md-12 txt-center">
+                        <h3>Grand opening of our new shop, honeydukes <br>
+                        Chocolate Frogs, Pumpkin Pasties, Bertie Bott's every Flavour Beans, ... <br>
+                       Our marvelous candies on sale for all wises and facetious souls !</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- Contenu Bannière 3 --}}
+
+        <div class="carousel-item"
+            style="background-image:linear-gradient(to right, rgba(252, 252, 252, 0.8), rgba(170, 170, 170, 0.4)), url(/assets/images/All/ban3.png); background-size: cover;">
+            <div class="container mt-3 mb-5">
+                <div class="row">
+                    <h2> Game Contest</h2>
+                    <div class="col-md-12 text-center">
+                        <h3>Try to win 2 places for the 423<span class="pack-span">rd</span> Quidditch world cup and
+                            take a seat next to the famous commentator, Lee Jordan !</h3>
+                        <p><small>*see general terms and conditions of the contest www.wizardingworld.com</small>
+                        </p>
+                        <div class="pack-signup">
+                            <a href="/" class="btn btn-red mt-3">Participate !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

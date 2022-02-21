@@ -1,0 +1,24 @@
+{{!--
+Partial: Events
+--}}
+
+<section class="all-cards container">
+    <div class="row">
+        <h2>Latest mangas</h2>
+
+
+        {{#each articles}}
+
+        <a class="col-md-3 btn-card" style="text-align: center;" href="/article/{{ id }}">
+            <div class="card-details">
+                <img class="card-img-top" src="/assets/images/Articles/{{ img }}">
+                <h4>{{ title }}</h4>
+            </div>
+        </a>
+
+        {{/each}}
+    </div>
+</section>
+
+<script>
+</script>

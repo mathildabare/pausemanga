@@ -1,0 +1,74 @@
+{{!--
+Partial: Register
+--}}
+
+<section class="register">
+    <div class="container">
+        <h2>Register</h2>
+
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <label class="form-label" for="username"></label>
+                        <input name="username" class="form-control" type="text" id="username" placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <label class="form-label" for="email"></label>
+                        <input name="mail" class="form-control" type="email" id="mail" placeholder="Mail address">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <label class="form-label" for="password"></label>
+                        <input name="password" class="form-control" type="password" id="password"
+                            placeholder="Password">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <label class="form-label" for="password"></label>
+                        <input name="confirmPassword" class="form-control" type="password" id="pwConfirm"
+                            placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="contact-form">
+
+
+                        <label class="mt-5" for="avatar">Choose your profile picture*</label>
+                        <input class="form-control" type="file" name="avatar" id="avatar">
+                        <p><small>*optional</small></p>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conditions d'utilisation -->
+
+            <div class="conditions mt-5">
+                <div class="form-check">
+
+                    <input type="checkbox" id="cg" class="form-check-input">
+
+                    <p><small>I have read and accepted the<button type="button" class="btn-terms" data-bs-toggle="modal"
+                                data-bs-target="#terms-modal">terms and conditions for use
+                            </button></small></p>
+                    <p id="prevent"></p>
+                </div>
+
+                <a href="/" id="submit-btn"><button type="submit" class="btn btn-log mt-5">Submit</button></a>
+
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<script src="assets/js/register.js"></script>
