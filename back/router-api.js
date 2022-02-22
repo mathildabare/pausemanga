@@ -19,8 +19,6 @@ const uploadArticles = require("./config/multer-articles");
 const uploadUsers = require("./config/multer-users");
 const uploadTomes = require("./config/multer-tomes");
 
-// Middlewares
-
 
 
 /*
@@ -107,7 +105,8 @@ router.route('/admin/users/:id')
     .put(AdminController.editUserID)
 
 router.route('/admin/articles')
-    .post(uploadArticles.single('img'), AdminController.createArticleAdmin)
+    .post(AdminController.createArticleAdmin)
+    // uploadArticles.single('img'), 
 
 router.route('/admin/articles/:id')
     .put(uploadArticles.single('img'), AdminController.editArticleID)

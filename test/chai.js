@@ -3,9 +3,9 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const should = require("chai").should();
 const expect = chai.expect;
-const {app, query} = require("../server");
+const { app, query } = require("../server");
 const path = require("path");
-const rand = Math.floor((Math.random() * 100) + 54)
+
 chai.use(chaiHttp);
 
 
@@ -14,17 +14,21 @@ chai.use(chaiHttp);
  *********************************************/
 
 
-describe("CHAI // CONTROLLER // ADMIN", () => {
+describe("AdminController - Chai", () => {
 
     let customer = {};
 
-    /****** Before Each  *******/
+    // /****** Before Each  *******/
 
     beforeEach(async () => {
-        
+
+        const rand = Math.floor((Math.random() * 100) + 54)
+        const date = new Date()
+        const format = date.getMilliseconds() + rand
+
         const user = await query(`
         INSERT INTO users (username , mail, password, biography) 
-        VALUES('BRUNO-${rand}', 'Bru-${rand}@no.fr', 'alive', '...')`);
+        VALUES('BRUNO-${format}', 'Bru-${format}@no.fr', 'alive', '...')`);
 
         // console.log("Before EACH: ", user);
         // assert.ok(user.insertId);
@@ -39,9 +43,10 @@ describe("CHAI // CONTROLLER // ADMIN", () => {
 
     });
 
+
     /****** GET - ADMIN  *******/
 
-    it(" ChaiRouter // Get Admin", (done) => {
+    it("Get Admin", (done) => {
         // test route Get
         chai
             .request(app)
@@ -57,15 +62,21 @@ describe("CHAI // CONTROLLER // ADMIN", () => {
     })
 
 
-    it(" ChaiRouter // Post Article", (done) => {
+    /****** POST - ADMIN  *******/
+
+
+    it("Post Article", (done) => {
+        const date = new Date()
         const body = {
-            title: "Fire Force",
-            genre_1: "horror",
-            genre_2: "shonen",
-            name: "Fire Force",
-            img: "...",
+            title: "Fire Force 77 77 fuck off",
+            name: "Fire Force" + date.getMilliseconds(),
+            genre_1: "Shonen",
+            genre_2: "Demons",
             synopsis: "...",
+            img: "..." + date.getMilliseconds()
         };
+
+        console.log("body", body);
 
         chai
             .request(app)
@@ -73,13 +84,23 @@ describe("CHAI // CONTROLLER // ADMIN", () => {
             .set("Accept", "application/json")
             .send(body)
             .end((err, res) => {
+                console.log('res;body tu', res.body)
                 if (err) return done(err);
                 res.should.have.status(200);
-                res.body.dbarticles.should.be.a("array");
-                res.body.dbarticles[0].should.be.a("object");
+                // res.body.dbarticles.should.be.a("array");
+                // res.body.dbarticles[0].should.be.a("object");
                 done();
             });
     });
+
+
+
+
+    /****** PUT  -  ADMIN   *******/
+
+
+
+    /****** DELETE - ADMIN  *******/
 
 
     it("Exemple", (done) => {
