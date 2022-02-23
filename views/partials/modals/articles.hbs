@@ -30,7 +30,7 @@ Articles --}}
                                     </div>
                                     <label class="form-label">Genre 1</label>
                                     <select name='genre_1' class="form-select">
-                                          <option value="" disabled selected> . . . . .</option>
+                                          <option value="" disabled selected>. . . . .</option>
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
@@ -39,10 +39,13 @@ Articles --}}
                                           <option>Shojo</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
+                                          <option>Sports</option>
+
+
                                     </select>
                                     <label class="form-label">Genre 2</label>
                                     <select name='genre_2' class="form-select">
-                                          <option value="" disabled selected> . . . . .</option>
+                                          <option value="" disabled selected>. . . . .</option>
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
@@ -51,6 +54,8 @@ Articles --}}
                                           <option>Shojo</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
+                                          <option>Sports</option>
+                                          
                                     </select>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label"></label>
@@ -89,7 +94,7 @@ Articles --}}
                                     <div class="mb-3 element-form">
                                           <label for="input-title" class="form-label"></label>
                                           <input name="title" type="text" class="form-control" id="input-title"
-                                                placeholder="Title" value=" {{ title }}">
+                                                placeholder="Title" value="{{ title }}">
                                     </div>
 
                                     <div class="mb-3">
@@ -99,7 +104,7 @@ Articles --}}
 
                                     <label class="form-label">Genre 1</label>
                                     <select name='genre_1' class="form-select">
-                                          <option value="" disabled selected> {{ genre_1 }}</option>
+                                          <option value="" disabled selected>{{ genre_1 }}</option>
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
@@ -108,10 +113,11 @@ Articles --}}
                                           <option>Shojo</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
+                                          <option>Sports</option>
                                     </select>
                                     <label class="form-label">Genre 2</label>
                                     <select name='genre_2' class="form-select">
-                                          <option=value="" disabled selected> {{ genre_2 }}</option=value=>
+                                          <option=value="" disabled selected>{{ genre_2 }}</option=value=>
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
@@ -120,11 +126,12 @@ Articles --}}
                                           <option>Shojo</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
+                                          <option>Sports</option>
                                     </select>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label"></label>
                                           <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="30"
-                                                rows="10" value=" {{ synopsis }}"></textarea>
+                                                rows="10" value="{{ synopsis }}"></textarea>
                                     </div>
                               </div>
                         </div>

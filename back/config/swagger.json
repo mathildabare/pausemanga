@@ -1,0 +1,100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "first",
+      "version": "1.0.0",
+      "license": {
+        "name": "ISC"
+      },
+      "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nma premiere app node"
+    },
+    "paths": {
+     
+      
+      "/back/v1/admin": {
+        "get": {
+          "summary": "/back/v1/admin",
+          "responses": {},
+          "tags": []
+        }
+      },
+      "/back/v1/admin/articles": {
+        "post": {
+          "summary": "/back/v1/admin/articles",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {"type": "string" },
+                    "name": { "type": "string" },
+                    "genre_1": { "type": "string" },
+                    "genre_2": { "type": "string" },
+                    "synopsis": { "type": "string" },
+                    "img": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {},
+          "tags": []
+        }
+      },
+      "/back/v1/admin/articles/{id}": {
+        "put": {
+          "summary": "/back/v1/admin/articles/{id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "title": { "type": "string" },
+                            "genre_1": { "type": "string" },
+                            "genre_2": { "type": "string" },
+                            "synopsis": { "type": "string" },
+                            "img": { "type": "string" }
+
+                        }
+                    }
+                }
+            }
+          },
+          "responses": {},
+          "tags": []
+          
+        },
+        "delete": {
+          "summary": "/back/v1/admin/articles/{id}",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {},
+          "tags": []
+        }
+      }
+    },
+    "tags": []
+  }

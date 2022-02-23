@@ -110,25 +110,38 @@ app.use('*', (req, res, next) => {
 
 
 
-//Import Router
+/*  ************ SWAGGER ***********  */
+// Import SWAGGER-UI || express-aos-generator
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./back/config/swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// const expressOasGenerator = require('express-oas-generator');
+// expressOasGenerator.init(app, {});
+
+
+
+/*  ***** ROUTERS && PAGE 404 *****  */
+
+// Import Router
 const ROUTER = require('./back/router')
 app.use('/', ROUTER)
-
 
 const ROUTER_API = require('./back/router-api')
 app.use('/back/v1', ROUTER_API)
 
 
-
 // Page 404
-app.use('*', function (req, res) {
-  res.status(404).render("error404", {
-      layout: 'err404'
-  })
-})
-
-
-
+// app.use('*', function (req, res) {
+  //   res.status(404).render("error404", {
+    //       layout: 'err404'
+    //   })
+    // })
+    
+   
+    
+/*  ************ PORT ***********  */
 
 // Lancement de l'application sur le port .env
 app.listen(port, () => {

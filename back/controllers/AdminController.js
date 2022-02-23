@@ -16,26 +16,27 @@ const {
 } = require('../utils/updateFile')
 
 
+
+
+
+/******** PAGE ADMIN *********/
+
 // Page Admin
 exports.get = async (req, res) => {
   res.render('admin', {
     layout: 'adminLayout',
-    users: await db.query(`select * from users`),
-    articles: await db.query(`select * from articles order by title`),
-    messages: await db.query(`select * from messages`),
-    comments: await db.query(`
+    users: await query(`select * from users`),
+    articles: await query(`select * from articles order by title`),
+    messages: await query(`select * from messages`),
+    comments: await query(`
     SELECT users.username, users.avatar, articles.title, articles.img, comments.content, comments.id 
     FROM ((comments
     INNER JOIN users ON users.id = comments.author_id)
     INNER JOIN articles ON articles.id = comments.article_id)
     order by articles.title`),
-    tomes: await db.query(`select * from tomes ORDER BY name, number`),
+    tomes: await query(`select * from tomes ORDER BY name, number`),
   })
 }
-
-/*
- * ADMIN - CRUD
- * **************************** */
 
 
 
@@ -95,22 +96,6 @@ exports.createArticleAdmin = async (req, res) => {
   res.redirect("/admin#blog");
 }
 
-// Effacer un Article
-exports.deleteArticleID = async (req, res) => {
-
-  // On sélectionne l'article dans la DB pour le supprimer
-  const article = await db.query(`select * from articles WHERE  id = ${ req.params.id };`)
-  await db.query(`delete from articles where id = ${ req.params.id }`)
-
-
-  // On cherche l'Img de l'article dans le Directory pour la supprimer
-  const dir = path.join('./public/images/Articles')
-  deleteOneFile(dir, article[0].img)
-
-  console.log('delete article', req.body, req.params, req.query, req.file)
-  res.redirect('/admin#blog');
-}
-
 // Editer un Article
 exports.editArticleID = async (req, res) => {
   console.log("On édite:", req.params.id, req.body)
@@ -142,6 +127,23 @@ exports.editArticleID = async (req, res) => {
   console.log('update article', req.body, req.params, req.query, req.file)
   res.redirect('/admin#blog');
 }
+
+// Supprimer un Article
+exports.deleteArticleID = async (req, res) => {
+
+  // On sélectionne l'article dans la DB pour le supprimer
+  const article = await db.query(`select * from articles WHERE  id = ${ req.params.id };`)
+  await db.query(`delete from articles where id = ${ req.params.id }`)
+
+
+  // On cherche l'Img de l'article dans le Directory pour la supprimer
+  const dir = path.join('./public/images/Articles')
+  deleteOneFile(dir, article[0].img)
+
+  console.log('delete article', req.body, req.params, req.query, req.file)
+  res.redirect('/admin#blog');
+}
+
 
 
 /***** GESTION TOMES ******/
@@ -198,7 +200,7 @@ exports.editTomeID = async (req, res) => {
   res.redirect('/admin#tomes');
 }
 
-// Supprime un Tome
+// Supprimer un Tome
 exports.deleteTomeID = async (req, res) => {
 
   // On sélectionne l'article dans la DB pour le supprimer
@@ -218,7 +220,7 @@ exports.deleteTomeID = async (req, res) => {
 
 /***** GESTION COMMENTAIRES ******/
 
-// Effacer un Commentaire
+// Supprimer un Commentaire
 exports.deleteCommentID = async (req, res) => {
   await db.query(`delete from comments where id = ${ req.params.id } `)
   console.log('delete comment', req.body, req.params, req.query)
@@ -229,7 +231,7 @@ exports.deleteCommentID = async (req, res) => {
 
 /******* GESTION MESSAGES ********/
 
-// Effacer un Message
+// Supprimer un Message
 exports.deleteMessageID = async (req, res) => {
   await db.query(`delete from messages where id = ${ req.params.id } `)
   console.log('delete comment', req.body, req.params, req.query)

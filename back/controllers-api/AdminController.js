@@ -130,11 +130,11 @@ exports.editArticleID = async (req, res) => {
   const id = req.params.id
 
   const { title, genre_1, genre_2, synopsis, img } = req.body
-
+console.log(title);
   // const article = query(`SELECT * FROM articles WHERE id = ${id}`)
 
   if (title, genre_1, genre_2, synopsis, img) {
-    query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis = '${genre_2}', img = ${img}  WHERE id = ${id};`)
+   await query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis = '${genre_2}', img = '${img}'  WHERE id = ${id};`)
   }
 
   // if (img) {
