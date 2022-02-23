@@ -74,21 +74,21 @@ describe("AdminController - Chai", () => {
 
     /****** GET ID - BLOG  *******/
 
-    it("Get Article ID", (done) => {
-        // test route Get
-        chai
-          .request(app)
-          .get(`/back/v1/article/${articles.id}`)
-          .set("Accept", "application/json")
-          .end((err, res) => {
-            if (err) return done(err);
-            // console.log('mes articles', res.body.dbarticles)
-            res.should.have.status(200);
-            res.body.dbarticles.should.be.a("array");
-            res.body.dbarticles[0].should.be.a("object");
-            done();
-          });
-      });
+    // it("Get Article ID", (done) => {
+    //     // test route Get
+    //     chai
+    //       .request(app)
+    //       .get(`/back/v1/article/${articles.id}`)
+    //       .set("Accept", "application/json")
+    //       .end((err, res) => {
+    //         if (err) return done(err);
+    //         // console.log('mes articles', res.body.dbarticles)
+    //         res.should.have.status(200);
+    //         res.body.dbarticles.should.be.a("array");
+    //         res.body.dbarticles[0].should.be.a("object");
+    //         done();
+    //       });
+    //   });
     
 
     /****** POST - ADMIN  *******/

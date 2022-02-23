@@ -69,7 +69,6 @@
                             "genre_2": { "type": "string" },
                             "synopsis": { "type": "string" },
                             "img": { "type": "string" }
-
                         }
                     }
                 }
@@ -77,7 +76,6 @@
           },
           "responses": {},
           "tags": []
-          
         },
         "delete": {
           "summary": "/back/v1/admin/articles/{id}",
