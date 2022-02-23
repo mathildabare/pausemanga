@@ -1,11 +1,9 @@
-/*
- * IMPORTS
- * ************************** */
+
+/***** IMPORTS ****** */
 
 const express = require("express");
 const router = express.Router();
 const testController = require('./controllers-api/testController')
-
 
 
 /*** ROUTES ***/
@@ -21,5 +19,4 @@ router.route('/admin/articles/:id')
     .delete(testController.delete)
 
 
-    
 module.exports = router;

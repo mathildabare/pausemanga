@@ -54,8 +54,7 @@ module.exports = {
   // DELETE ARTICLE
   delete: async (req, res) => {
 
-    const article = query(`SELECT * from articles WHERE  id = ${ req.params.id };
-`)
+    const article = query(`SELECT * from articles WHERE  id = ${ req.params.id };`)
 
     await query(`DELETE from articles WHERE id = ${ req.params.id }`)
 
@@ -64,5 +63,4 @@ module.exports = {
       dbarticles: await query('select * from articles')
     })
   }
-
 }

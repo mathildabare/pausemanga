@@ -9,8 +9,6 @@
       "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nma premiere app node"
     },
     "paths": {
-     
-      
       "/back/v1/admin": {
         "get": {
           "summary": "/back/v1/admin",
@@ -52,7 +50,9 @@
               "in": "path",
               "required": true,
               "schema": {
-                "type": "string"
+                "type": "integer",
+                "format": "int64",
+                "minimum": 1
               }
             }
           ],
@@ -85,7 +85,9 @@
               "in": "path",
               "required": true,
               "schema": {
-                "type": "string"
+                "type": "integer",
+                "format": "int64",
+                "minimum": 1
               }
             }
           ],
