@@ -109,9 +109,9 @@ router.route('/admin/articles')
     // uploadArticles.single('img'), 
 
 router.route('/admin/articles/:id')
-    .put(uploadArticles.single('img'), AdminController.editArticleID)
+    .put(AdminController.editArticleID)
     .delete(AdminController.deleteArticleID)
-
+    // uploadArticles.single('img'),
 router.route("/admin/tomes/:id")
     .post(uploadTomes.single('img'), AdminController.createTome)
     .put(uploadTomes.single('img'), AdminController.editTomeID)

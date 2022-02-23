@@ -84,26 +84,31 @@ exports.banUserID = async (req, res) => {
 /******* GESTION ARTICLES ********/
 
 // Créer un Article
-exports.createArticleAdmin = (req, res) => {
-  console.log("new article", req.body);
+exports.createArticleAdmin = async (req, res) => {
+  // console.log("new article", req.body);
   const { title, name, genre_1, genre_2, synopsis, img } = req.body
 
-  console.log('keys', title, name, genre_1, genre_2, synopsis);
+  // console.log('keys', title, name, genre_1, genre_2, synopsis);
 
-  query(`
+  await query(`
     insert into articles (title, name, img, genre_1, genre_2, synopsis)
       VALUES ("${title}", "${name}", "${img}", "${genre_1}","${genre_2}", "${synopsis}");
   `)
 
-  res.json({ dbarticles: query('select * from articles') })
+  res.json({ 
+    status:200,
+    dbarticles: await query('select * from articles') })
 }
 
 // Effacer un Article
-exports.deleteArticleID = (req, res) => {
+exports.deleteArticleID = async (req, res) => {
 
   // On sélectionne l'article dans la DB pour le supprimer
-  const article =  query(`select * from articles WHERE  id = ${ req.params.id };`)
- query(`delete from articles where id = ${ req.params.id }`)
+const article = await query(`select * from articles WHERE  id = ${ req.params.id };
+`)
+
+
+await query(`delete from articles where id = ${ req.params.id }`)
 
 
   // On cherche l'Img de l'article dans le Directory pour la supprimer
@@ -113,16 +118,16 @@ exports.deleteArticleID = (req, res) => {
   // console.log('delete article', req.body, req.params, req.query, req.file)
 
   res.json({ 
-  dbarticles: query('select * from articles'), 
+  dbarticles: await query('select * from articles'), 
   status: 200 
 })
 }
 
 // Editer un Article
-exports.editArticleID = (req, res) => {
-  console.log("On édite:", req.body)
+exports.editArticleID = async (req, res) => {
+  // console.log("On édite:", req.body)
 
-  // const id = req.params.id
+  const id = req.params.id
 
   const { title, genre_1, genre_2, synopsis, img } = req.body
 
@@ -138,8 +143,10 @@ exports.editArticleID = (req, res) => {
   //   await db.query(`UPDATE articles SET img = '${req.file.filename}' WHERE id = ${id}`)
   // }
 
-  console.log('update article', req.body, req.params, req.query)
-  res.json({ dbarticles: query('select * from articles') })
+  // console.log('update article', req.body, req.params, req.query)
+  res.json({ 
+    status : 200,
+    dbarticles: await query(`select * from articles`) })
 
 }
 

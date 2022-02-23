@@ -27,7 +27,7 @@ exports.articlepage = async (req, res) => {
   
   const allArticles = `SELECT count(*) as nbArticles FROM articles`;
   
-  db.query(allArticles, (error, results, fields) => {
+  query(allArticles, (error, results, fields) => {
       nbArticles = results[0].nbArticles;
       numPages = Math.ceil(nbArticles / numPerPage);
     
@@ -36,7 +36,7 @@ exports.articlepage = async (req, res) => {
   
   
   const articles = `SELECT * FROM articles ORDER BY title LIMIT ${limit}`
-  db.query(articles, (error, results, fields) => {
+  query(articles, (error, results, fields) => {
   
   
       if (page <= numPages) {
@@ -54,7 +54,10 @@ exports.articlepage = async (req, res) => {
               page: Pagination
           })
       } else {
-          res.redirect('article')
+        res.json({
+          status: 200,
+          dbarticles: query('select * from articles') })
+
       }
   })
 };
@@ -64,8 +67,8 @@ exports.pageArticleID = async (req, res) => {
   const { id } = req.params
   // console.log("je suis la page article/:id", req.params);
 
-  const article = await db.query(`select * from articles where id = ${ id };`)
-  const comments = await db.query(`  
+  const article = await query(`select * from articles where id = ${ id };`)
+  const comments = await query(`  
   SELECT  users.username, users.avatar, comments.content, comments.article_id
   FROM users 
   INNER JOIN comments 
@@ -73,7 +76,7 @@ exports.pageArticleID = async (req, res) => {
   WHERE article_id = ${id}; 
 `) //table comments + article.id
   
-  const tomes = await db.query(`
+  const tomes = await query(`
   SELECT  articles.name, tomes.name, tomes.number, tomes.img
   FROM articles 
   INNER JOIN tomes 
@@ -85,11 +88,11 @@ exports.pageArticleID = async (req, res) => {
   // console.log('article obj', article[0])
 
   res.json({
-    status : 200, 
-    article: article[0],
-    comments, 
+    status: 200,
+    dbarticles: await query(`select * from articles`),
+    comments,
     tomes
-  })
+   })
 }
 
 
