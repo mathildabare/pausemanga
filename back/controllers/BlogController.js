@@ -100,10 +100,11 @@ exports.pageArticleID = async (req, res) => {
 exports.createArticleUser = async (req, res) => {
   console.log("new article", req.body, req.params, req.query);
   const { title, genre_1, genre_2, synopsis } = req.body
-
+  const img = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
+  
   await db.query(`
-    insert into articles (title, name, genre_1, genre_2, synopsis, img)
-      VALUES ("${title}", "${title}", "${genre_1}","${genre_2}", :synopsis, "${req.file.filename}");`, {synopsis})
+      insert into articles (title, name, genre_1, genre_2, synopsis, img)
+      VALUES ("${title}", "${title}", "${genre_1}","${genre_2}", :synopsis, "${img}");`, {synopsis})
   res.redirect("/article");
 }
 

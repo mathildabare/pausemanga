@@ -19,6 +19,12 @@ const uploadArticles = require("./config/multer-articles");
 const uploadUsers = require("./config/multer-users");
 const uploadTomes = require("./config/multer-tomes");
 
+// Sharp
+const sharpUsers = require('./config/sharp-users');
+const sharpArticles = require('./config/sharp-articles');
+const sharpTomes = require('./config/sharp-tomes');
+
+
 // Middlewares
 const mdl = require('./middlewares/isAdmin')
 
@@ -43,7 +49,7 @@ router.route("/")
 // BLOG
 router.route("/article")
   .get(BlogController.articlepage)
-  .post(uploadArticles.single('img'), BlogController.createArticleUser)
+  .post(uploadArticles.single('img'), sharpArticles, BlogController.createArticleUser)
 
 router.route("/article/:id") //
   .get(BlogController.pageArticleID)
@@ -68,13 +74,13 @@ router.route('/login')
 
 router.route('/register')
   .get(AuthController.registerpage)
-  .post(uploadUsers.single('avatar'), AuthController.createUser)
+  .post(uploadUsers.single('avatar'), sharpUsers, AuthController.createUser)
 
 router.route('/user')
   .get(AuthController.userProfile)
 
 router.route('/user/:id')
-  .put(uploadUsers.single('avatar'), AuthController.editUser)
+  .put(uploadUsers.single('avatar'), sharpUsers, AuthController.editUser)
 
 router.route('/logout')
   .get(AuthController.logout)
@@ -99,7 +105,7 @@ router.route('/admin')
   .get(mdl.isAdmin, AdminController.get)
 
 router.route('/admin/:id')
-  .put(mdl.isAdmin, uploadUsers.single('avatar'), AuthController.editUser)
+  .put(mdl.isAdmin, uploadUsers.single('avatar'),sharpUsers, AuthController.editUser)
 
 router.route('/admin/ban/users/:id')
   .put(mdl.isAdmin, AdminController.banUserID)
@@ -108,15 +114,15 @@ router.route('/admin/users/:id')
   .put(mdl.isAdmin, AdminController.editUserID)
 
 router.route('/admin/articles')
-  .post(mdl.isAdmin, uploadArticles.single('img'), AdminController.createArticleAdmin)
+  .post(mdl.isAdmin, uploadArticles.single('img'),sharpArticles, AdminController.createArticleAdmin)
 
 router.route('/admin/articles/:id')
-  .put(mdl.isAdmin, uploadArticles.single('img'), AdminController.editArticleID)
+  .put(mdl.isAdmin, uploadArticles.single('img'),sharpArticles, AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
 
 router.route("/admin/tomes/:id")
-  .post(uploadTomes.single('img'), AdminController.createTome)
-  .put(mdl.isAdmin, uploadTomes.single('img'), AdminController.editTomeID)
+  .post(uploadTomes.single('img'), sharpTomes, AdminController.createTome)
+  .put(mdl.isAdmin, uploadTomes.single('img'), sharpTomes, AdminController.editTomeID)
   .delete(AdminController.deleteTomeID)
 
 router.route('/admin/comments/:id')

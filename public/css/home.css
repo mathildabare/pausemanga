@@ -267,6 +267,7 @@ header {
     height: 25vh;
     min-height: 400px;
     background: no-repeat center center scroll;
+    background-size: cover;
 }
 
 

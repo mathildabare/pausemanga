@@ -78,20 +78,12 @@ exports.banUserID = async (req, res) => {
 // Créer un Article
 exports.createArticleAdmin = async (req, res) => {
   console.log("new article", req.body, req.params, req.file);
-  const {
-    title,
-    genre_1,
-    genre_2,
-    synopsis
-  } = req.body
-
+  const { title, genre_1, genre_2, synopsis } = req.body
+  const img = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
 
   await db.query(`
     insert into articles (title, name, img, genre_1, genre_2, synopsis)
-      VALUES ("${title}", "${title}", "${req.file.filename}", "${genre_1}","${genre_2}", :synopsis);`, {
-    synopsis
-  })
-
+      VALUES ("${title}", "${title}", "${img}", "${genre_1}","${genre_2}", :synopsis);`, { synopsis })
 
   res.redirect("/admin#blog");
 }
@@ -101,12 +93,7 @@ exports.editArticleID = async (req, res) => {
   console.log("On édite:", req.params.id, req.body)
 
   const id = req.params.id
-  const {
-    title,
-    genre_1,
-    genre_2,
-    synopsis
-  } = req.body
+  const { title, genre_1, genre_2, synopsis } = req.body
   const img = req.file
 
 
@@ -121,7 +108,7 @@ exports.editArticleID = async (req, res) => {
   if (img) {
     const dir = path.join('./public/images/Articles')
     deleteOneFile(dir, article[0].img)
-    await db.query(`UPDATE articles SET img = '${req.file.filename}' WHERE id = ${id}`)
+    await db.query(`UPDATE articles SET img = '${req.file.filename.split('.').slice(0, -1).join('.') + ".webp"}' WHERE id = ${id}`)
   }
 
   console.log('update article', req.body, req.params, req.query, req.file)
@@ -151,10 +138,8 @@ exports.deleteArticleID = async (req, res) => {
 // Créer un Tome
 exports.createTome = async (req, res) => {
 
-  const {
-    number,
-    name
-  } = req.body
+  const { number, name } = req.body
+  const img = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
 
   const tomes = await db.query(`
   SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
@@ -166,7 +151,7 @@ exports.createTome = async (req, res) => {
   const id = tomes[0].id
 
   await db.query(`insert into tomes (name, number, img )
-  VALUES ('${name}','${number}','${req.file.filename}')
+  VALUES ('${name}','${number}','${img}')
   `)
 
   res.redirect(`/admin#tomes`);
@@ -177,10 +162,7 @@ exports.editTomeID = async (req, res) => {
   console.log("On édite:", req.params.id, req.body)
 
   const id = req.params.id
-  const {
-    name,
-    number
-  } = req.body
+  const { name, number } = req.body
   const img = req.file
 
 
@@ -193,7 +175,7 @@ exports.editTomeID = async (req, res) => {
   if (img) {
     const dir = path.join('./public/images/Tomes')
     deleteOneFile(dir, tomes[0].img)
-    await db.query(`UPDATE tomes SET img = '${req.file.filename}' WHERE id = ${id}`)
+    await db.query(`UPDATE tomes SET img = '${req.file.filename.split('.').slice(0, -1).join('.') + ".webp"}' WHERE id = ${id}`)
   }
 
   console.log('update article', req.body, req.params, req.query, req.file)

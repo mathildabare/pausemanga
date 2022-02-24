@@ -86,10 +86,7 @@ exports.registerpage = async (req, res) => {
   SELECT * FROM users;`)
   // console.log('user', user)
 
-  const {
-    username,
-    password
-  } = req.body;
+  const { username, password } = req.body;
 
   res.render("register");
 };
@@ -112,13 +109,16 @@ exports.createUser = async (req, res) => {
   const {username, mail, password } = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
+
   console.log('mon hash', hash);
 
   if (req.file) {
 
+    const avatar = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
+
     await db.query(`
     insert into users (username, mail, password, avatar)
-      VALUES ("${username}","${mail}","${hash}", "${req.file.filename}");`)
+      VALUES ("${username}","${mail}","${hash}", "${avatar}");`)
   } else if (!req.file) {
 
     const avatar = req.file ? req.file.filename : "defaultAvatar.png"
@@ -138,7 +138,6 @@ exports.editUser = async (req, res) => {
   const { username, biography } = req.body
   const avatar = req.file
 
-
  
 
   // console.log('avatar', avatar, 'mon magnifique id', id);
@@ -154,7 +153,7 @@ exports.editUser = async (req, res) => {
   if (avatar) {
     const dir = path.join('./public/images/Users')
     deleteOneFile(dir, users[0].avatar)
-    await db.query(`UPDATE users SET avatar = '${req.file.filename}' WHERE id = '${req.params.id}';`)
+    await db.query(`UPDATE users SET avatar = '${req.file.filename.split('.').slice(0, -1).join('.') + ".webp"}' WHERE id = '${req.params.id}';`)
   }
   
 

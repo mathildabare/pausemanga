@@ -7,7 +7,7 @@ Main : Navbar
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light">
     <div class="container">
-        <a class="navbar-brand me-xl-4" href="/"><img src="/assets/images/All/logo.png" style="max-width: 40px;"> Pause
+        <a class="navbar-brand me-xl-4" href="/"><img src="/assets/images/All/logo.png" style="max-width: 40px;" alt=""> Pause
             Manga</a>
         <button class="navbar-toggler me-3 ms-auto order-lg-3" type="button" data-bs-toggle="collapse"
             data-bs-target="#monMenu" aria-controls="monMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@ Main : Navbar
                 {{!-- Login --}}
                 {{#if user }}
                 <a class="nav-item nav-link" href="/user">Profile</a>
-                <a class="nav-item btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#deconnexion-modal">
+                <a class="nav-item btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#deconnexion-modal" href="/">
                     Logout
                 </a>
                 {{else}}

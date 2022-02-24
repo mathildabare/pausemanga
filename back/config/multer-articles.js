@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     // Format du nom de l'image à stocker //
     filename: function (req, file, callback) {
         const ext = Date.now() + '_' + file.originalname
-        console.log('multer cb:', file)
+        // console.log('multer cb:', file)
         file.nomComplet = ext
         callback(null, ext)
     }
@@ -38,18 +38,19 @@ const upload = multer({
         files: 1
     },
 
-    // Filtre en configurant des types d'images accepter //
+    // Filtre en configurant des types d'images acceptées //
     fileFilter: function (req, file, callback) {
         if (
             file.mimetype === "image/png" ||
             file.mimetype === "image/jpg" ||
-            file.mimetype === "image/jpeg"|| 
+            file.mimetype === "image/jpeg"||
+            file.mimetype === "image/webp"|| 
             file.mimetype === "image/gif" 
         ) {
             callback(null, true)
         } else {
             callback(null, false)
-            callback(new Error('Votre fichier doit être au format .png, .jpg, .jpeg ou .gif .'))
+            callback(new Error('Votre fichier doit être au format .png, .jpg, .jpeg, .webp ou .gif .'))
         }
     }
 })
