@@ -24,10 +24,8 @@ const sharpUsers = require('./config/sharp-users');
 const sharpArticles = require('./config/sharp-articles');
 const sharpTomes = require('./config/sharp-tomes');
 
-
 // Middlewares
 const mdl = require('./middlewares/isAdmin')
-
 
 
 /*

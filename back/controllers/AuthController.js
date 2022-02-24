@@ -121,7 +121,7 @@ exports.createUser = async (req, res) => {
       VALUES ("${username}","${mail}","${hash}", "${avatar}");`)
   } else if (!req.file) {
 
-    const avatar = req.file ? req.file.filename : "defaultAvatar.png"
+    const avatar = req.file ? req.file.filename : "defaultAvatar.webp"
 
     await db.query(`
     insert into users (username, mail, password, avatar)
@@ -168,4 +168,4 @@ exports.editUser = async (req, res) => {
 
 
 // ADD CONDITIONS MDP
-// ADD CONDTIONS USERNAME 
+// ADD CONDTIONS USERNAME  

@@ -8,12 +8,7 @@ const path = require('path')
 const directory = path.resolve("./public/images/Articles")
 
 // Utils Files
-const {
-  deleteOneFile
-} = require('../utils/deleteOneFile')
-const {
-  updateFile
-} = require('../utils/updateFile')
+const { deleteOneFile } = require('../utils/deleteOneFile')
 
 
 
@@ -83,7 +78,7 @@ exports.createArticleAdmin = async (req, res) => {
 
   await db.query(`
     insert into articles (title, name, img, genre_1, genre_2, synopsis)
-      VALUES ("${title}", "${title}", "${img}", "${genre_1}","${genre_2}", :synopsis);`, { synopsis })
+      VALUES ( :title, :title, "${img}", "${genre_1}","${genre_2}", :synopsis);`, { synopsis, title })
 
   res.redirect("/admin#blog");
 }
@@ -100,8 +95,8 @@ exports.editArticleID = async (req, res) => {
   const article = await db.query(`SELECT * FROM articles WHERE id = ${id}`)
 
   if (title, genre_1, genre_2, synopsis) {
-    await db.query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis =:synopsis WHERE id = ${id};`, {
-      synopsis
+    await db.query(`UPDATE articles SET title =:title, genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis =:synopsis WHERE id = ${id};`, {
+      title, synopsis
     })
   }
 
