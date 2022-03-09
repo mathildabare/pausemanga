@@ -7,7 +7,7 @@ const { db } = require("../server");
  ** TEST CRUD - MESSAGES
  *********************************************/
 
-describe("MOCHA // CRUD // Customer", () => {
+describe("ADMIN CONTROLLER // ARTICLES", () => {
     let message = {};
     let id = 0;
 
@@ -31,7 +31,7 @@ describe("MOCHA // CRUD // Customer", () => {
 
 
     /****** POST  *******/
-    it("POST // Messages", async () => {
+    it("POST // Articles", async () => {
         let values = ['Node', 'no@de.fr', 'dead', '...'];
         let sql = `INSERT INTO messages (name, mail, status, content) values('Node', 'no@de.fr', 'dead', '...')`;
         const user = await query(sql, [values]);
@@ -51,7 +51,7 @@ describe("MOCHA // CRUD // Customer", () => {
 
     /******  GET  *******/
     // Get All
-    it("GET ALL // Messages", async () => {
+    it("GET // Articles", async () => {
         let sql = `SELECT * FROM messages`;
         const listMessages = await db.query(sql);
 
@@ -63,19 +63,19 @@ describe("MOCHA // CRUD // Customer", () => {
         assert.strictEqual(messages.length > 0, true);
     });
 
-    // Get ID Customer
-    it("GET ID // Message", async () => {
-        // Récupère l'id du BeforeEach
-        let sql = `SELECT * FROM messages WHERE id = ${message.id}`;
-        const messageID = await query(sql);
+    // // Get ID Customer
+    // it("GET ID // Article", async () => {
+    //     // Récupère l'id du BeforeEach
+    //     let sql = `SELECT * FROM messages WHERE id = ${message.id}`;
+    //     const messageID = await query(sql);
 
-        // console.log('GETID: ', userID)
-        assert.ok(messageID);
-    });
+    //     // console.log('GETID: ', userID)
+    //     assert.ok(messageID);
+    // });
 
 
     /******  PUT  *******/
-    it("PUT ID // Messages", async () => {
+    it("PUT ID // Articles", async () => {
         // console.log("EDITT: ", customer);
         let sql = `UPDATE messages
                      SET name = 'Tobi',
@@ -100,7 +100,7 @@ describe("MOCHA // CRUD // Customer", () => {
 
     /***** DELETE  ******/
     // Delete ID
-    it("DELETE ID // Messages", async () => {
+    it("DELETE ID // Articles", async () => {
         let sql = `DELETE FROM messages WHERE id = ${message.id}`;
         await query(sql);
 
@@ -111,20 +111,20 @@ describe("MOCHA // CRUD // Customer", () => {
         assert.strictEqual(messageID.length, 0);
     });
 
-    // Delete ALL
-    it("DELETE ALL // Messages", async () => {
-        let sql = `DELETE FROM messages`;
-        const user = await query(sql);
+    // // Delete ALL
+    // it("DELETE ALL // Messages", async () => {
+    //     let sql = `DELETE FROM messages`;
+    //     const user = await query(sql);
 
-        // console.log('DELETE ALL: ', listUser.length)
+    //     // console.log('DELETE ALL: ', listUser.length)
 
-        const listMessages = await query("SELECT * FROM messages");
-        assert.strictEqual(listMessages.length, 0);
-    });
+    //     const listMessages = await query("SELECT * FROM messages");
+    //     assert.strictEqual(listMessages.length, 0);
+    // });
 
 
     // Test
-    it("TEST // message", (done) => {
+    it("TEST // articles", (done) => {
         // console.log("TEST: ", id)
         done();
     });

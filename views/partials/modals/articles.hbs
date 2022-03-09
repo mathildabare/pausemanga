@@ -6,14 +6,13 @@ Articles --}}
 
 {{!-- Article Creation --}}
 
-<div class="modal fade" id="create-article-modal" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+<div class="modal fade" id="create-article-modal" tabindex="-1" aria-labelledby="createArticleLabel" aria-hidden="true">
       <div class="modal-dialog">
             <div class="modal-content">
                   <div class="modal-header">
                         <h4>Add an article</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-
 
                   <form action="/admin/articles" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
@@ -35,8 +34,9 @@ Articles --}}
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
                                           <option>Super-Heroes</option>
-                                          <option>Horror</option>                                          
+                                          <option>Horror</option>
                                           <option>Shojo</option>
+                                          <option>Yaoi</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
                                           <option>Sports</option>
@@ -50,8 +50,9 @@ Articles --}}
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
                                           <option>Super-Heroes</option>
-                                          <option>Horror</option>                                          
+                                          <option>Horror</option>
                                           <option>Shojo</option>
+                                          <option>Yaoi</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
                                           <option>Sports</option>
@@ -70,8 +71,7 @@ Articles --}}
                               <button type="submit" class="btn btn-on">Confirm</button>
                         </div>
                   </form>
-
-
+                  
             </div>
       </div>
 </div>
@@ -100,7 +100,8 @@ Articles --}}
 
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" name="img" id="articleImg"                                         type="file" value="{{ img }}">
+                                          <input class="form-control form-control-sm" name="img" id="articleImg"
+                                                type="file" value="{{ img }}">
                                     </div>
 
                                     <label class="form-label">Genre 1</label>
@@ -110,8 +111,9 @@ Articles --}}
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
                                           <option>Super-Heroes</option>
-                                          <option>Horror</option>                                          
+                                          <option>Horror</option>
                                           <option>Shojo</option>
+                                          <option>Yaoi</option>
                                           <option>Demons</option>
                                           <option>Comedy</option>
                                           <option>Sports</option>
@@ -120,16 +122,17 @@ Articles --}}
                                     <label class="form-label">Genre 2</label>
                                     <select name='genre_2' class="form-select">
                                           <option=value="" disabled selected>{{ genre_2 }}</option=value=>
-                                          <option>Shonen</option>
-                                          <option>Seinen</option>
-                                          <option>Fantastic</option>
-                                          <option>Super-Heroes</option>
-                                          <option>Horror</option>                                          
-                                          <option>Shojo</option>
-                                          <option>Demons</option>
-                                          <option>Comedy</option>
-                                          <option>Sports</option>
-                                          <option>Magical-Girl</option>
+                                                <option>Shonen</option>
+                                                <option>Seinen</option>
+                                                <option>Fantastic</option>
+                                                <option>Super-Heroes</option>
+                                                <option>Horror</option>
+                                                <option>Shojo</option>
+                                                <option>Yaoi</option>
+                                                <option>Demons</option>
+                                                <option>Comedy</option>
+                                                <option>Sports</option>
+                                                <option>Magical-Girl</option>
                                     </select>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label"></label>

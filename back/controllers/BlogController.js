@@ -57,22 +57,16 @@ exports.articlepage = async (req, res) => {
   
 // Page Article:ID
 exports.pageArticleID = async (req, res) => {
-  const {
-    id
-  } = req.params
-  console.log("je suis la page article/:id", req.params);
-
-  const article = await db.query(`select * from articles where id = ${ id };`) //table articles + article.id
+  const { id } = req.params
+  const article = await db.query(`select * from articles where id = ${ id };`)
+  
   const comments = await db.query(`  
   SELECT  users.username, users.avatar, comments.content, comments.article_id
   FROM users 
   INNER JOIN comments 
   ON users.id = comments.author_id
   WHERE article_id = ${id}; 
-`) //table comments + article.id
-  
-
-  
+`)
   const tomes = await db.query(`
   SELECT  articles.name, tomes.name, tomes.number, tomes.img
   FROM articles 
@@ -81,9 +75,8 @@ exports.pageArticleID = async (req, res) => {
   WHERE articles.id = ${req.params.id}
   ORDER BY tomes.number;`)
 
-
-  console.log('article array', article)
-  console.log('article obj', article[0])
+  // console.log('article array', article)
+  // console.log('article obj', article[0])
 
   res.render("articleID", {
     article: article[0],

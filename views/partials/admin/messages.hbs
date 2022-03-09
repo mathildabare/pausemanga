@@ -14,31 +14,41 @@ Partial: Comments (Admin)
         {{#each messages}}
 
 
-{{!-- Method override - Delete --}}
-<form action="/admin/messages/{{id}}?_method=DELETE" method="post">
+        {{!-- Method override - Delete --}}
+        <form action="/admin/messages/{{id}}?_method=DELETE" method="post">
 
-        <div class="messages">
-            <div class="row">
-                <div class="col-md-10">
-                    <blockquote>
-                        <cite class="me-5"><img src="assets/images/Users/user1.jpg" alt="">{{name}}</cite>
-                     {{content}}
-                    </blockquote>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="gst-icons mt-5">
-                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                            data-bs-target="#delete-message-modal-{{ id }}">
-                            <i class="fas fa-trash-alt"></i> </button>
+            <div class="messages-admin">
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="author col-md-2">
+                            <img src="assets/images/Users/defaultAvatar.webp"
+                                style="width: 50px; height: auto; border-radius:50%; margin-top:15px" alt="">
+                            <p>{{name}}</p>
+                        </div>
+
+                        <div class="col-md-8 comment-content">
+                            <p>
+                                {{content}}
+                            </p>
+                        </div>
+
+                        <div class="col-md-2 text-center">
+                            <div class="gst-icons">
+                                <button type="button" class="btn-gestion" style="margin-top:30px; background-color:  rgb(243, 243, 243)" data-bs-toggle="modal"
+                                    data-bs-target="#delete-message-modal-{{ id }}">
+                                    <i class="fas fa-trash-alt"></i> </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             {{> modals/comments }}
-            
+
             {{/each}}
-        
+
         </form>
     </div>
 </section>
+

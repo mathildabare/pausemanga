@@ -18,24 +18,24 @@ module.exports = {
   // POST ARTICLE
   post: async (req, res) => {
 
-    const { title, name, genre_1, genre_2, synopsis, img } = req.body
+  const { title, name, genre_1, genre_2, synopsis, img } = req.body
 
-    await query(`
+  await query(`
   INSERT INTO articles (title, name, img, genre_1, genre_2, synopsis)
   VALUES ("${title}", "${name}", "${img}", "${genre_1}","${genre_2}", "${synopsis}");
   `)
 
-    res.json({
-      status: 200,
-      dbarticles: await query('SELECT * from articles')
-    })
+  res.json({
+    status: 200,
+    dbarticles: await query('SELECT * from articles')
+  })
   },
 
   // PUT ARTICLE
   put: async (req, res) => {
 
-    const { id } = req.params
-    const { title, genre_1, genre_2, synopsis, img } = req.body
+  const { id } = req.params
+  const { title, genre_1, genre_2, synopsis, img } = req.body
 
     if (title, genre_1, genre_2, synopsis, img) {
       query(`

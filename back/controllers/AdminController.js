@@ -85,12 +85,11 @@ exports.createArticleAdmin = async (req, res) => {
 
 // Editer un Article
 exports.editArticleID = async (req, res) => {
-  console.log("On édite:", req.params.id, req.body)
+  // console.log("On édite:", req.params.id, req.body)
 
   const id = req.params.id
   const { title, genre_1, genre_2, synopsis } = req.body
   const img = req.file
-
 
   const article = await db.query(`SELECT * FROM articles WHERE id = ${id}`)
 
@@ -99,14 +98,13 @@ exports.editArticleID = async (req, res) => {
       title, synopsis
     })
   }
-
   if (img) {
     const dir = path.join('./public/images/Articles')
     deleteOneFile(dir, article[0].img)
     await db.query(`UPDATE articles SET img = '${req.file.filename.split('.').slice(0, -1).join('.') + ".webp"}' WHERE id = ${id}`)
   }
 
-  console.log('update article', req.body, req.params, req.query, req.file)
+  // console.log('update article', req.body, req.params, req.query, req.file)
   res.redirect('/admin#blog');
 }
 
@@ -122,7 +120,7 @@ exports.deleteArticleID = async (req, res) => {
   const dir = path.join('./public/images/Articles')
   deleteOneFile(dir, article[0].img)
 
-  console.log('delete article', req.body, req.params, req.query, req.file)
+  // console.log('delete article', req.body, req.params, req.query, req.file)
   res.redirect('/admin#blog');
 }
 

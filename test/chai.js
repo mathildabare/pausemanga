@@ -97,15 +97,15 @@ describe("AdminController - Chai", () => {
     it("Post Article", (done) => {
         const date = new Date()
         const body = {
-            title: "Fire Force 77 77 fuck off",
-            name: "Fire Force" + date.getMilliseconds(),
+            title: "Kuroshitsuji",
+            name: "Kuroshitsuji" + date.getMilliseconds(),
             genre_1: "Shonen",
             genre_2: "Demons",
             synopsis: "...",
             img: "..." + date.getMilliseconds()
         };
 
-        console.log("body", body);
+        // console.log("body", body);
 
         chai
             .request(app)

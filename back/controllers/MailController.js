@@ -48,10 +48,10 @@ module.exports = {
             const mailOptions = {
                 from: 'pausemanga.test@gmail.com',
                 to: req.body.mail,
-                subject: `'Vous avez demandé à réinitialiser votre mot de passe, ' + ${user[0].username}`,
+                subject: `You wanted to reset your password, ${user[0].username}`,
                 rand: req.session.visitor.id,
                 html: `
-              <p>click above the link to rest your password </p><br>
+              <p>click above the link to reset your password </p><br>
               <a href="${link}">Click here</a>`
             }
 

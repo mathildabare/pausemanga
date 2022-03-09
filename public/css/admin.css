@@ -347,6 +347,33 @@ nav btn {
     margin-top: 10px;
 }
 
+
+
+.messages-admin {
+    background-color: rgb(243, 243, 243);
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 5px;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment-content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+line-break: anywhere;
+font-weight: 300;
+}
+
+
+
 .messages button {
     background-color: lightgrey;
     margin: 0 5px;

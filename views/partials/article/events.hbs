@@ -75,14 +75,6 @@ Partial: Events
 
                   {{/each}}
 
-                  <div class="col-md-3 mb-3">
-                        <div class="card-details">
-
-                              <button type="submit" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#create-article-modal-user"><i class="fas fa-plus"></i>
-                              </button>
-                        </div>
-                  </div>
             </div>
       </div>
     
@@ -90,14 +82,14 @@ Partial: Events
 
 {{!-- Modal --}}
 
-<div class="modal fade" id="create-article-modal-user" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+{{!-- <div class="modal fade" id="create-article-modal-user" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
       <div class="modal-dialog">
             <div class="modal-content">
                   <div class="modal-header">
                         <h4>Add an article</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-
+{{!-- 
                   <form action="/article" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
@@ -146,7 +138,7 @@ Partial: Events
                               <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
                               <button type="submit" class="btn btn-on">Confirm</button>
                         </div>
-                  </form>
+                  </form> --}}
 
             </div>
       </div>
