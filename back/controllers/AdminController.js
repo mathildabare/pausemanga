@@ -29,7 +29,11 @@ exports.get = async (req, res) => {
     INNER JOIN users ON users.id = comments.author_id)
     INNER JOIN articles ON articles.id = comments.article_id)
     order by articles.title`),
-    tomes: await query(`select * from tomes ORDER BY name, number`),
+    tomes: await query(`SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
+    FROM  tomes
+    INNER JOIN articles 
+    ON tomes.name = articles.name
+    ORDER BY tomes.number;`),
   })
 }
 
@@ -68,7 +72,7 @@ exports.banUserID = async (req, res) => {
 
 // Créer un Article
 exports.createArticleAdmin = async (req, res) => {
-  console.log("new article", req.body, req.params, req.file);
+  // console.log("new article", req.body, req.params, req.file);
   const { title, genre_1, genre_2, synopsis } = req.body
   const img = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
 
@@ -130,18 +134,19 @@ exports.createTome = async (req, res) => {
   const { number, name } = req.body
   const img = req.file.filename.split('.').slice(0, -1).join('.') + ".webp"
 
-  const tomes = await db.query(`
-  SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
-  FROM  tomes
-  INNER JOIN articles 
-  ON tomes.name = articles.name
-  ORDER BY tomes.number; `)
+  // const tomes = await db.query(`
+  // SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
+  // FROM  tomes
+  // INNER JOIN articles 
+  // ON tomes.name = articles.name
+  // ORDER BY tomes.number; `)
+
 
   await db.query(`insert into tomes (name, number, img )
   VALUES ('${name}','${number}','${img}')
   `)
 
-  res.redirect(`/admin#tomes`);
+  res.redirect('/admin#tomes');
 };
 
 // Editer un Tome

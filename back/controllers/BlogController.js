@@ -114,7 +114,7 @@ exports.createComment = async (req, res) => {
   await db.query(`
     insert into comments (author_id, content, article_id)
     VALUES ("${author}", :content , "${id}" );`, {content})
-  console.log(`article/${id}`);
+  // console.log(`article/${id}`);
 
   res.redirect(`/article/${ id }#comments`);
 };
