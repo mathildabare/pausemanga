@@ -118,8 +118,10 @@ router.route('/admin/articles/:id')
   .put(mdl.isAdmin, uploadArticles.single('img'),sharpArticles, AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
 
-router.route("/admin/tomes/:id")
+router.route('/admin/tomes')
   .post(uploadTomes.single('img'), sharpTomes, AdminController.createTome)
+
+router.route("/admin/tomes/:id")
   .put(mdl.isAdmin, uploadTomes.single('img'), sharpTomes, AdminController.editTomeID)
   .delete(AdminController.deleteTomeID)
 

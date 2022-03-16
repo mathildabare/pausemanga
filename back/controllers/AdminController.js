@@ -137,8 +137,6 @@ exports.createTome = async (req, res) => {
   ON tomes.name = articles.name
   ORDER BY tomes.number; `)
 
-  const id = tomes[0].id
-
   await db.query(`insert into tomes (name, number, img )
   VALUES ('${name}','${number}','${img}')
   `)
