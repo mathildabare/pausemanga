@@ -50,19 +50,15 @@ exports.editUserID = async (req, res) => {
 
 // Bannir / Débannir un User
 exports.banUserID = async (req, res) => {
-
   const user = await db.query(`SELECT * from users where id = '${req.params.id}'`)
-  console.log('mon user', user);
-
+  // console.log('mon user', user);
 
   if (user[0].isBan === 0) {
     await db.query(`UPDATE users SET isBan = 1 WHERE id ='${req.params.id}';`), console.log(' Banni !');
   }
-
   if (user[0].isBan === 1) {
     await db.query(`UPDATE users SET isBan = 0 WHERE id ='${req.params.id}';`), console.log('Débanni !');
   };
-
   res.redirect('/admin#user');
 }
 
@@ -198,7 +194,7 @@ exports.deleteTomeID = async (req, res) => {
 // Supprimer un Commentaire
 exports.deleteCommentID = async (req, res) => {
   await db.query(`delete from comments where id = ${ req.params.id } `)
-  console.log('delete comment', req.body, req.params, req.query)
+  // console.log('delete comment', req.body, req.params)
   res.redirect('/admin#comments');
 }
 
@@ -209,6 +205,6 @@ exports.deleteCommentID = async (req, res) => {
 // Supprimer un Message
 exports.deleteMessageID = async (req, res) => {
   await db.query(`delete from messages where id = ${ req.params.id } `)
-  console.log('delete comment', req.body, req.params, req.query)
+  // console.log('delete comment', req.body, req.params)
   res.redirect('/admin#messages');
 }

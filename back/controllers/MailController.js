@@ -80,21 +80,14 @@ module.exports = {
     // Page Reset MDP
     resetpasswordPage: async (req, res) => {
 
-        console.log('Reset passwor 1', req.protocol + "://" + req.get('host'), "  ||  ", "http://" + req.get('host'))
-
-        // Ici on check notre protocole hébergeur (nodejs localhost) et le lien généré dans le mail
         if (req.protocol + "://" + req.get('host') === "http://" + req.get('host')) {
-            console.log("Domain is matched. Information is from Authentic email")
-
             const userID = await db.query(`SELECT id FROM users WHERE id = '${req.params.id}'`)
-
-            console.log('edit Password (reset)', req.params.id, req.session)
+            // console.log('edit Password (reset)', req.params.id, req.session)
 
             if (Number(req.params.id) === Number(req.session.visitor.id)) {
                 res.render('resetpassword', {
                     rand: req.session.visitor.id
                 })
-
             } else {
                 console.log("Mauvaise requête")
                 res.redirect('/')
@@ -104,14 +97,9 @@ module.exports = {
 
     // POST : Reset MDP
     resetpassword: async (req, res) => {
-        const {
-            password,
-            confirmPassword
-        } = req.body
+        const { password, confirmPassword } = req.body
         const hash = bcrypt.hashSync(password, 10)
-
-        console.log("controller reset password")
-        console.log('mon hash : ', hash)
+        // console.log('mon hash : ', hash)
 
         if (password !== confirmPassword) {
             res.redirect('back')
